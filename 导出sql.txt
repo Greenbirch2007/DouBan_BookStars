@@ -1,0 +1,1 @@
+SELECT distinct title,stars,conments_Num FROM DouBan_BookStars.java_book into outfile "/home/lk/DouBan_BookStars/java_book.xls" ;
