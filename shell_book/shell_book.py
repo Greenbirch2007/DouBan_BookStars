@@ -21,7 +21,7 @@ def get_one_page(url):
 
 
 def next_page():
-    for i in range(1,138):  # 有一个翻页小技巧
+    for i in range(6,138):  # 有一个翻页小技巧
         time.sleep(3)
         driver.find_element_by_xpath('//*[@id="root"]/div/div[2]/div[1]/div[1]/div/a[last()]').click()
         html = driver.page_source
@@ -47,7 +47,7 @@ def insertDB(content):
     cursor = connection.cursor()
     # 这里是判断big_list的长度，不是content字符的长度
     try:
-        cursor.executemany('insert into java_book (title,stars,conments_Num) values (%s,%s,%s)', content)
+        cursor.executemany('insert into shell_book (title,stars,conments_Num) values (%s,%s,%s)', content)
         connection.commit()
         connection.close()
         print('向MySQL中添加数据成功！')
@@ -58,7 +58,7 @@ def insertDB(content):
 
 if __name__ == "__main__":
     big_list = []
-    url = 'https://book.douban.com/subject_search?search_text=java&cat=1001&start=75'
+    url = 'https://book.douban.com/subject_search?search_text=shell&cat=1001&start=120'
     time.sleep(1)
     html = get_one_page(url)
     content = parse_page(html)
@@ -73,7 +73,7 @@ if __name__ == "__main__":
         print(datetime.datetime.now())
 
 #
-# create table java_book(
+# create table shell_book(
 # id int not null primary key auto_increment,
 # title text,
 # stars varchar(10),
@@ -81,7 +81,7 @@ if __name__ == "__main__":
 # ) engine=InnoDB  charset=utf8;
 
 
-# drop  table java_book;
+# drop  table CPlus_book;
 
 
 
